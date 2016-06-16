@@ -1,3 +1,6 @@
+require 'bigdecimal'
+require 'bigdecimal/util'
+
 module FeCoreExt::CoreExt
 end
 
