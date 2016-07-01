@@ -18,6 +18,14 @@ module FeCoreExt::CoreExt::String
   def not_number?
     to_i == 0 && match('0').nil?
   end
+
+  def zen_to_han
+    tr('０-９Ａ-Ｚａ-ｚ　＆・', '0-9A-Za-z &･')
+  end
+
+  def to_katakana
+    tr('ぁ-ん','ァ-ン')
+  end
 end
 
 class String
