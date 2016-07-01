@@ -20,7 +20,7 @@ module FeCoreExt::CoreExt::String
   end
 
   def zen_to_han
-    tr('０-９Ａ-Ｚａ-ｚ　＆・', '0-9A-Za-z &･')
+    tr('０-９Ａ-Ｚａ-ｚ　＆・－', '0-9A-Za-z &･-')
   end
 
   def to_katakana
