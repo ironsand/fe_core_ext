@@ -4,3 +4,5 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'bigdecimal'
+gem 'timecop'
+gem 'test-unit'
