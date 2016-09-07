@@ -13,6 +13,7 @@ module FeCoreExt::CoreExt::Array
   end
 
   def mean
+    return if empty?
     sum.to_d / size
   end
 end
