@@ -7,7 +7,7 @@ end
 module FeCoreExt::CoreExt::Date
   def parse_as_future(string)
     date = parse(string)
-    date > today ? date : date + 1.year
+    date > current ? date : date + 1.year
   end
 end
 

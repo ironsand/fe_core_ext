@@ -24,7 +24,11 @@ module FeCoreExt::CoreExt::String
   end
 
   def to_katakana
-    tr('ぁ-ん','ァ-ン')
+    tr('ぁ-ん', 'ァ-ン')
+  end
+
+  def match?(str)
+    /#{str}/ === self
   end
 end
 
