@@ -9,6 +9,12 @@ module FeCoreExt::CoreExt::Date
     date = parse(string)
     date > current ? date : date + 1.year
   end
+
+  def parse_heisei(string)
+    string.match('平成(\d+)年(\d+)月(\d+)日') {
+      Date.new($1.to_i + 1988, $2.to_i, $3.to_i)
+    }
+  end
 end
 
 class Date

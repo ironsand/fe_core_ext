@@ -9,4 +9,8 @@ class DateTest < Test::Unit::TestCase
     assert_equal(Date.new(2017, 9, 5), Date.parse_as_future('9/5'))
     assert_equal(Date.new(2017, 9, 4), Date.parse_as_future('9/4'))
   end
+
+  def test_parse_heisei
+    assert_equal(Date.new(2016,9,29), Date.parse_heisei('平成28年9月29日'))
+  end
 end
