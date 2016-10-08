@@ -5,6 +5,12 @@ module FeCoreExt::CoreExt
 end
 
 module FeCoreExt::CoreExt::Date
+  def end_of_month?
+    self == end_of_month
+  end
+end
+
+module FeCoreExt::CoreExt::DateClassMethods
   def parse_as_future(string)
     date = parse(string)
     date > current ? date : date + 1.year
@@ -18,5 +24,6 @@ module FeCoreExt::CoreExt::Date
 end
 
 class Date
-  extend FeCoreExt::CoreExt::Date
+  include FeCoreExt::CoreExt::Date
+  extend FeCoreExt::CoreExt::DateClassMethods
 end
