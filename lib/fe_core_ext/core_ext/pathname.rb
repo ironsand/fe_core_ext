@@ -11,6 +11,13 @@ module FeCoreExt::CoreExt::Pathname
   end
 end
 
+module FeCoreExt::CoreExt::PathnameClassMethods
+  def join(*args)
+    File.join(*args)
+  end
+end
+
 class Pathname
+  extend FeCoreExt::CoreExt::PathnameClassMethods
   include FeCoreExt::CoreExt::Pathname
 end
