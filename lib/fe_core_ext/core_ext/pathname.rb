@@ -13,7 +13,7 @@ end
 
 module FeCoreExt::CoreExt::PathnameClassMethods
   def join(*args)
-    File.join(*args)
+    new(File.join(*args))
   end
 end
 
