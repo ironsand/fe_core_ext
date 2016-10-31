@@ -11,8 +11,8 @@ module FeCoreExt::CoreExt::Pathname
     YAML.load_file(self)
   end
 
-  def glob(string)
-    Pathname.glob(self.join(string).to_s)
+  def glob(pattern, &block)
+    Pathname.glob join(pattern), &block
   end
 
   def touch(options={})
