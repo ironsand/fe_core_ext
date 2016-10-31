@@ -1,5 +1,6 @@
 require 'pathname'
 require 'yaml'
+require 'fileutils'
 
 module FeCoreExt::CoreExt
 end
@@ -12,6 +13,10 @@ module FeCoreExt::CoreExt::Pathname
 
   def glob(string)
     Pathname.glob(self.join(string).to_s)
+  end
+
+  def touch(options={})
+    FileUtils.touch(@path, options)
   end
 end
 
