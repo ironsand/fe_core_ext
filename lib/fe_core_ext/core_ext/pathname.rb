@@ -12,7 +12,7 @@ module FeCoreExt::CoreExt::Pathname
   end
 
   def glob(pattern, &block)
-    Pathname.glob join(pattern), &block
+    Pathname.glob(join(pattern), &block)
   end
 
   def touch(options={})
