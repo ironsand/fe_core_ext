@@ -18,6 +18,10 @@ module FeCoreExt::CoreExt::Pathname
   def touch(options={})
     FileUtils.touch(@path, options)
   end
+
+  def require_relative
+    Kernel.require_relative(self)
+  end
 end
 
 module FeCoreExt::CoreExt::PathnameClassMethods
