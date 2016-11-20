@@ -19,13 +19,12 @@ module FeCoreExt::CoreExt::Pathname
     FileUtils.touch(@path, options)
   end
 
-  def delete(options={})
-    super if options.empty?
+  def rm(options={})
     FileUtils.rm(self, options)
   end
 
-  def mkpath
-    super
+  def mkdir_p
+    mkpath
     self
   end
 
