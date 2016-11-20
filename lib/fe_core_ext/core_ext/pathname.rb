@@ -19,6 +19,11 @@ module FeCoreExt::CoreExt::Pathname
     FileUtils.touch(@path, options)
   end
 
+  def delete(options={})
+    super if options.empty?
+    FileUtils.rm(self, options)
+  end
+
   def require_relative
     Kernel.require_relative(self)
   end
