@@ -1,5 +1,6 @@
 require 'bigdecimal'
 require 'bigdecimal/util'
+require 'pathname'
 
 module FeCoreExt::CoreExt
 end
@@ -13,6 +14,10 @@ module FeCoreExt::CoreExt::String
   def to_decimal
     return if not_number?
     delete(',').to_d
+  end
+
+  def to_pathname
+    Pathname(self)
   end
 
   def not_number?
