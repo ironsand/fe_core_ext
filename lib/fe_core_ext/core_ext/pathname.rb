@@ -24,6 +24,11 @@ module FeCoreExt::CoreExt::Pathname
     FileUtils.rm(self, options)
   end
 
+  def mkpath
+    super
+    self
+  end
+
   def require_relative
     Kernel.require_relative(self)
   end
