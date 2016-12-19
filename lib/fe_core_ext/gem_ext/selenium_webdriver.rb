@@ -26,4 +26,20 @@ class Selenium::WebDriver::Driver
     end
     fe_find_elements(:xpath, path)
   end
+
+  def at_css(path, wait: nil)
+    if wait.present?
+      driver_wait = Selenium::WebDriver::Wait.new(timeout: wait)
+      driver_wait.until { fe_find_element(:css, path) }
+    end
+    fe_find_element(:css, path)
+  end
+
+  def css(path, wait: nil)
+    if wait.present?
+      driver_wait = Selenium::WebDriver::Wait.new(timeout: wait)
+      driver_wait.until { fe_find_elements(:css, path) }
+    end
+    fe_find_elements(:css, path)
+  end
 end
