@@ -43,3 +43,11 @@ module Selenium::WebDriver::Find
     fe_find_elements(:css, path)
   end
 end
+
+class Selenium::WebDriver::Driver
+  include Selenium::WebDriver::Find
+end
+
+class Selenium::WebDriver::Element
+  include Selenium::WebDriver::Find
+end
