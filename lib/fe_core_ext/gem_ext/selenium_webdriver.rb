@@ -1,4 +1,4 @@
-class Selenium::WebDriver::Driver
+module Selenium::WebDriver::Find
   def fe_find_element(*args)
     find_element(*args)
   rescue Selenium::WebDriver::Error::NoSuchElementError
