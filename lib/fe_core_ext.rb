@@ -6,6 +6,7 @@ require 'fe_core_ext/core_ext/csv'
 require 'fe_core_ext/core_ext/pathname'
 require 'fe_core_ext/core_ext/date'
 require 'fe_core_ext/core_ext/fixnum'
+require 'fe_core_ext/core_ext/numeric'
 
 module FeCoreExt
 end
