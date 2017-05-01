@@ -35,6 +35,10 @@ module FeCoreExt::CoreExt::String
   def match?(str)
     /#{str}/ === self
   end
+
+  def kana_upcase
+    tr('ァィゥェォヵヶッャュョヮ','アイウエオカケツヤユヨワ')
+  end
 end
 
 class String
