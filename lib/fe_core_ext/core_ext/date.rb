@@ -8,6 +8,10 @@ module FeCoreExt::CoreExt::Date
   def end_of_month?
     self == end_of_month
   end
+
+  def range(duration)
+    Range.new([(self + duration), self].min, [self + duration, self].max)
+  end
 end
 
 module FeCoreExt::CoreExt::DateClassMethods
