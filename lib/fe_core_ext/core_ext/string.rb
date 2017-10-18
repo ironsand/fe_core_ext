@@ -39,6 +39,16 @@ module FeCoreExt::CoreExt::String
   def kana_upcase
     tr('ァィゥェォヵヶッャュョヮ','アイウエオカケツヤユヨワ')
   end
+
+  def to_han_kana
+    return if self.nil?
+    NKF.nkf('-wxZ4', self)
+  end
+
+  def to_zen_kana
+    return if self.nil?
+    NKF.nkf('-wX',self)
+  end
 end
 
 class String
