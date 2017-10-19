@@ -49,6 +49,10 @@ module FeCoreExt::CoreExt::String
     return if self.nil?
     NKF.nkf('-wX',self)
   end
+
+  def to_date_in_ja
+    match(/(\d{4})年(\d{2})月(\d{2})日/){ Date.new($1.to_i, $2.to_i, $3.to_i) }
+  end
 end
 
 class String
