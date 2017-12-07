@@ -53,6 +53,11 @@ module FeCoreExt::CoreExt::String
   def to_date_in_ja
     match(/(\d{4})年(\d{1,2})月(\d{1,2})日/){ Date.new($1.to_i, $2.to_i, $3.to_i) }
   end
+
+  # remove also no break space and other space like characters.
+  def strong_strip
+    reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, '').reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, '')
+  end
 end
 
 class String
