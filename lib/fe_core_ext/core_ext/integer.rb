@@ -7,6 +7,6 @@ module FeCoreExt::CoreExt::Integer
   end
 end
 
-class Fixnum
+class Integer
   include FeCoreExt::CoreExt::Integer
 end
