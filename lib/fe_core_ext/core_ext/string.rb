@@ -1,6 +1,7 @@
 require 'bigdecimal'
 require 'bigdecimal/util'
 require 'pathname'
+require 'nkf'
 
 module FeCoreExt::CoreExt
 end
