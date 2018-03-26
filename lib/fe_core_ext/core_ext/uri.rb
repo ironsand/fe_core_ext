@@ -1,18 +1,11 @@
 require 'uri'
+require 'open-uri'
 
 module FeCoreExt::CoreExt
 end
 
-module FeCoreExt::CoreExt::URI
+module URI
   def download(file)
-    File.open(file, 'wb') {|f| f.write(open(self).read)}
+    File.open(file, 'wb') {|f| f.write(OpenURI.open_uri(self).read)}
   end
-end
-
-module FeCoreExt::CoreExt::URIClassMethods
-end
-
-class URI
-  extend FeCoreExt::CoreExt::URIClassMethods
-  include FeCoreExt::CoreExt::URI
 end
