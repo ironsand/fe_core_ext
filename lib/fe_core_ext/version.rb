@@ -1,3 +1,3 @@
 module FeCoreExt
-  VERSION = '0.1.49'
+  VERSION = '0.2.1'
 end
