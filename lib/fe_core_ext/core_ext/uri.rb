@@ -6,6 +6,7 @@ end
 
 module URI
   def download(file)
-    File.open(file, 'wb') {|f| f.write(OpenURI.open_uri(self).read)}
+    binary = OpenURI.open_uri(self).read
+    File.open(file, 'wb') {|f| f.write(binary)}
   end
 end
