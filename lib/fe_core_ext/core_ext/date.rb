@@ -12,6 +12,10 @@ module FeCoreExt::CoreExt::Date
   def range(duration)
     Range.new(*[self + duration, self].minmax)
   end
+
+  def to_time_range
+    Range.new(beginning_of_day, end_of_day)
+  end
 end
 
 module FeCoreExt::CoreExt::DateClassMethods
