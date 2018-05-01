@@ -10,3 +10,9 @@ module URI
     File.open(file, 'wb') {|f| f.write(binary)}
   end
 end
+
+class URI::Generic
+  def basename
+    File.basename(path)
+  end
+end
