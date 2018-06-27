@@ -38,7 +38,7 @@ module FeCoreExt::CoreExt::String
   end
 
   def kana_upcase
-    tr('ァィゥェォヵヶッャュョヮ','アイウエオカケツヤユヨワ')
+    tr('ァィゥェォヵヶッャュョヮ', 'アイウエオカケツヤユヨワ')
   end
 
   def to_han_kana
@@ -48,16 +48,26 @@ module FeCoreExt::CoreExt::String
 
   def to_zen_kana
     return if self.nil?
-    NKF.nkf('-wX',self)
+    NKF.nkf('-wX', self)
   end
 
   def to_date_in_ja
-    match(/(\d{4})年(\d{1,2})月(\d{1,2})日/){ Date.new($1.to_i, $2.to_i, $3.to_i) }
+    match(/(\d{4})年(\d{1,2})月(\d{1,2})日/) {Date.new($1.to_i, $2.to_i, $3.to_i)}
   end
 
   # remove also no break space and other space like characters.
   def strong_strip
     reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, '').reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, '')
+  end
+
+  def sjis_encodable
+    tr("\u301C\u2212\u00A2\u00A3\u00AC\u2014\u2016",
+       "\uFF5E\uFF0D\uFFE0\uFFE1\uFFE2\u2015\u2225")
+  end
+
+  def eucjp_encodable
+    tr("\uFF5E\uFF0D\uFFE0\uFFE1\uFFE2\u2015\u2225",
+       "\u301C\u2212\u00A2\u00A3\u00AC\u2014\u2016")
   end
 end
 
