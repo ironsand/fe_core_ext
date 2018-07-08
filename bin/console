@@ -10,5 +10,7 @@ require "fe_core_ext"
 # require "pry"
 # Pry.start
 
-require "irb"
-IRB.start
+#require "irb"
+require 'pry'
+Pry.start
+#IRB.start
