@@ -4,9 +4,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'fe_core_ext/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "fe_core_ext"
+  spec.name          = 'fe_core_ext'
   spec.version       = FeCoreExt::VERSION
-  spec.authors       = ["Tetsu"]
+  spec.authors       = ['Tetsu']
   spec.email         = ['eisensand@gmail.com']
 
   spec.summary       = %q{Core class extensions}
