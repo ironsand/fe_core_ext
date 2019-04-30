@@ -29,6 +29,18 @@ module FeCoreExt::CoreExt::DateClassMethods
       Date.new($1.to_i + 1988, $2.to_i, $3.to_i)
     }
   end
+
+  def parse_reiwa(string)
+    string.match('令和(\S+)年(\d+)月(\d+)日') {
+      year = 1 if $1 == '元'
+      year ||= $1.to_i
+      Date.new(year + 2018, $2.to_i, $3.to_i)
+    }
+  end
+
+  def parse_gengo(string)
+    parse_heisei(string) || parse_reiwa(string)
+  end
 end
 
 class Date

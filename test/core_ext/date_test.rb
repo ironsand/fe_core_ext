@@ -13,4 +13,15 @@ class DateTest < Test::Unit::TestCase
   def test_parse_heisei
     assert_equal(Date.new(2016,9,29), Date.parse_heisei('平成28年9月29日'))
   end
+
+  def test_parse_reiwa
+    assert_equal(Date.new(2019,9,29), Date.parse_reiwa('令和1年9月29日'))
+    assert_equal(Date.new(2019,9,29), Date.parse_reiwa('令和元年9月29日'))
+  end
+
+  def test_parse_gengo
+    assert_equal(Date.new(2016,9,29), Date.parse_gengo('平成28年9月29日'))
+    assert_equal(Date.new(2019,9,29), Date.parse_reiwa('令和1年9月29日'))
+    assert_equal(Date.new(2019,9,29), Date.parse_reiwa('令和元年9月29日'))
+  end
 end
