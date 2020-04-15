@@ -22,6 +22,6 @@ end
 
 class URI::Generic
   def basename
-    File.basename(path)
+    ::File.basename(path)
   end
 end
