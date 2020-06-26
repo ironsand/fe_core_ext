@@ -19,6 +19,15 @@ module FeCoreExt::CoreExt::Date
 end
 
 module FeCoreExt::CoreExt::DateClassMethods
+  def parsable?(string)
+    begin
+      parse(string)
+      true
+    rescue ArgumentError
+      false
+    end
+  end
+
   def parse_as_future(string)
     date = parse(string)
     date > current ? date : date + 1.year
