@@ -31,6 +31,12 @@ module FeCoreExt::CoreExt::Pathname
   def require_relative
     Kernel.require_relative(self)
   end
+end
+
+module FeCoreExt::CoreExt::PathnameClassMethods
+  def join(*args)
+    new(File.join(*args))
+  end
 
   def mktmpdir(prefix_suffix=nil, tmpdir=nil)
     if block_given?
@@ -40,12 +46,6 @@ module FeCoreExt::CoreExt::Pathname
     else
       new(Dir.mktmpdir(prefix_suffix, tmpdir))
     end
-  end
-end
-
-module FeCoreExt::CoreExt::PathnameClassMethods
-  def join(*args)
-    new(File.join(*args))
   end
 end
 
