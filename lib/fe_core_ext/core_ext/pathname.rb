@@ -31,6 +31,16 @@ module FeCoreExt::CoreExt::Pathname
   def require_relative
     Kernel.require_relative(self)
   end
+
+  def mktmpdir(prefix_suffix=nil, tmpdir=nil)
+    if block_given?
+      Dir.mktmpdir prefix_suffix, tmpdir do |dir|
+        yield new(dir)
+      end
+    else
+      new(Dir.mktmpdir(prefix_suffix, tmpdir))
+    end
+  end
 end
 
 module FeCoreExt::CoreExt::PathnameClassMethods
