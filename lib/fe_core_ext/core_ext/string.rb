@@ -25,7 +25,12 @@ module FeCoreExt::CoreExt::String
     to_i == 0 && match('0').nil?
   end
 
+  ## deprecated
   def zen_to_han
+    tr('０-９Ａ-Ｚａ-ｚ　＆・－（）', '0-9A-Za-z &･\-()')
+  end
+
+  def alphanumeric_zen_to_han
     tr('０-９Ａ-Ｚａ-ｚ　＆・－（）', '0-9A-Za-z &･\-()')
   end
 
