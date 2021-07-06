@@ -1,4 +1,5 @@
 require 'uri'
+require 'fileutils'
 require 'open-uri'
 require 'net/http'
 
@@ -8,6 +9,10 @@ end
 module URI
   def download(file)
     binary = OpenURI.open_uri(self).read
+    dirname = File.dirname(file)
+    unless File.directory?(dirname)
+      FileUtils.mkdir_p(dirname)
+    end
     ::File.open(file, 'wb') {|f| f.write(binary)}
   end
 
