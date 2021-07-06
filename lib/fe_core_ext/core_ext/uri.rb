@@ -9,15 +9,15 @@ end
 module URI
   def download(file)
     binary = OpenURI.open_uri(self).read
-    dirname = File.dirname(file)
-    unless File.directory?(dirname)
-      FileUtils.mkdir_p(dirname)
+    dirname = ::File.dirname(file)
+    unless ::File.directory?(dirname)
+      ::FileUtils.mkdir_p(dirname)
     end
     ::File.open(file, 'wb') {|f| f.write(binary)}
   end
 
   def exists?
-    req = Net::HTTP.new(host, port)
+    req = ::Net::HTTP.new(host, port)
     req.use_ssl = true if scheme == 'https'
     res = req.request_head(path)
     return URI(res['location']).exists? if %w(301 302).include?(res.code)
