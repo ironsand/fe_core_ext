@@ -34,22 +34,33 @@ module FeCoreExt::CoreExt::DateClassMethods
   end
 
   def parse_heisei(string)
-    string.match('平成(\d+)年(\d+)月(\d+)日') {
+    string.match('平成(\d+)年(\d+)月(\d+)日') do
       Date.new($1.to_i + 1988, $2.to_i, $3.to_i)
-    }
+    end
   end
 
   def parse_reiwa(string)
-    string.match('令和(\S+)年(\d+)月(\d+)日') {
+    string.match('令和(\S+)年(\d+)月(\d+)日') do
       year = 1 if $1 == '元'
       year ||= $1.to_i
       Date.new(year + 2018, $2.to_i, $3.to_i)
-    }
+    end
   end
 
   def parse_gengo(string)
     parse_heisei(string) || parse_reiwa(string)
   end
+
+  def parse_nengappi(string)
+    string.match(/(\d{4})年(\d+)月(\d+)日/) do
+       Date.new($1.to_i, $2.to_i, $3.to_i) 
+    end
+  end
+
+  def parse_ja(string)
+    parse_nengappi(string) || parse_gengo(string)
+  end
+
 end
 
 class Date
