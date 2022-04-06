@@ -12,8 +12,18 @@ module FeCoreExt::CoreExt::String
     delete(',').to_i
   end
 
+  def to_integer_new
+    return unless valid_number?
+    delete(',').to_i
+  end
+
   def to_decimal
     return if not_number?
+    delete(',').to_d
+  end
+
+  def to_decimal_new
+    return unless valid_number?
     delete(',').to_d
   end
 
@@ -23,6 +33,10 @@ module FeCoreExt::CoreExt::String
 
   def not_number?
     to_i == 0 && match('0').nil?
+  end
+
+  def valid_number?
+    match?(/^[\d\,\.]+$/)
   end
 
   ## deprecated
