@@ -31,6 +31,11 @@ module FeCoreExt::CoreExt::String
     delete(',').to_d
   end
 
+  def to_float
+    return unless valid_number?
+    delete(',').to_f
+  end
+
   def to_pathname
     Pathname(self)
   end
