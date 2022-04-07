@@ -17,6 +17,10 @@ module FeCoreExt::CoreExt::String
     delete(',').to_i
   end
 
+  def integer?
+    self.to_i.to_s == self
+  end
+
   def to_decimal
     return if not_number?
     delete(',').to_d
