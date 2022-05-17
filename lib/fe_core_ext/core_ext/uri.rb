@@ -8,7 +8,7 @@ end
 
 module URI
   def download(file)
-    warn 'URI#downloadの引数にはPathnameを使いましょう！' if 'file'.is_a?(String)
+    warn 'URI#downloadの引数にはPathnameを使いましょう！' if file.is_a?(String)
     binary = OpenURI.open_uri(self).read
     file = file + self.basename if file.to_s[-1] == '/'
     dirname = ::File.dirname(file)
