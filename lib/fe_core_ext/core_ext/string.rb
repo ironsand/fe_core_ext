@@ -8,11 +8,6 @@ end
 
 module FeCoreExt::CoreExt::String
   def to_integer
-    return if not_number?
-    delete(',').to_i
-  end
-
-  def to_integer_new
     return unless valid_number?
     delete(',').to_i
   end
