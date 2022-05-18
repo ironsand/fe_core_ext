@@ -75,7 +75,15 @@ module FeCoreExt::CoreExt::String
   end
 
   def to_date_in_ja
+    to_date_in_ja_seireki || to_date_in_ja_heisei
+  end
+
+  def to_date_in_ja_seireki
     match(/(\d{4})年(\d{1,2})月(\d{1,2})日/) {Date.new($1.to_i, $2.to_i, $3.to_i)}
+  end
+
+  def to_date_in_ja_heisei
+    match(/平成(\d{2})年(\d{1,2})月(\d{1,2})日/) {Date.new($1.to_i + 1988, $2.to_i, $3.to_i)}
   end
 
   # remove also no break space and other space like characters.
