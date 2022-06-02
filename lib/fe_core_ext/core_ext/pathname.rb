@@ -27,11 +27,6 @@ module FeCoreExt::CoreExt::Pathname
     FileUtils.rm(self, options)
   end
 
-  def existence
-    return self if self.exist? 
-    nil
-  end
-
   def mkdir_p
     mkpath
     self
