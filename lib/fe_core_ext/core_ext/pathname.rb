@@ -15,6 +15,10 @@ module FeCoreExt::CoreExt::Pathname
     Pathname.glob(join(pattern), &block)
   end
 
+  def existence
+    self if exist?
+  end
+
   def touch(options={})
     FileUtils.touch(@path, options)
   end
