@@ -17,7 +17,7 @@ module FeCoreExt::CoreExt::String
   end
 
   def to_decimal
-    return if not_number?
+    return unless valid_number?
     delete(',').to_d
   end
 
