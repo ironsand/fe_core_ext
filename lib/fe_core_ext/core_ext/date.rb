@@ -16,6 +16,13 @@ module FeCoreExt::CoreExt::Date
   def to_time_range
     Range.new(beginning_of_day, end_of_day)
   end
+
+  def nth_weekday(nth, weekday)
+    first_day = Date.new(self.year, self.month, 1)
+    weekdays_hash = {sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6}
+    weekday_dates = (first_day..first_day.end_of_month).select{|d| d.wday == weekdays_hash[weekday]}
+    weekday_dates[nth - 1]
+  end
 end
 
 module FeCoreExt::CoreExt::DateClassMethods
