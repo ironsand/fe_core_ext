@@ -32,6 +32,10 @@ module FeCoreExt::CoreExt::Pathname
     self
   end
 
+  def copy(dest)
+    FileUtils.cp(self, dest)
+  end
+
   def require_relative
     Kernel.require_relative(self)
   end
