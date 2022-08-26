@@ -27,12 +27,9 @@ end
 
 module FeCoreExt::CoreExt::DateClassMethods
   def parsable?(string)
-    begin
-      parse(string)
-      true
-    rescue ArgumentError
-      false
-    end
+    parsed_hash = _parse(string)
+    return true if parsed_hash.has_key?(:year) && parsed_hash.has_key?(:mon)
+    false
   end
 
   def parse_as_future(string)

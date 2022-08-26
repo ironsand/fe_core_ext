@@ -1,4 +1,4 @@
-require File.expand_path('../../../lib/fe_core_ext', __FILE__)
+require_relative '../../lib/fe_core_ext'
 require 'timecop'
 require 'test/unit'
 
@@ -12,6 +12,14 @@ class DateTest < Test::Unit::TestCase
   
   def test_parse_ja
     assert_equal(Date.new(2016,9,29), Date.parse_ja('2016年9月29日'))
+  end
+
+  def test_parsable_ja_format
+    refute(Date.parsable?('2016年9月29日'))
+  end
+
+  def test_parsable_year_month
+    assert(Date.parsable?('2016/09'))
   end
 
   def test_parse_heisei
