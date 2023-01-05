@@ -7,8 +7,8 @@ module FeCoreExt::CoreExt
 end
 
 module FeCoreExt::CoreExt::Hash
-  def symbolize_keys
-    transform_keys { |key| key.to_s.underscore.to_sym }
+  def snake_symbolize_keys
+    transform_keys { |key| key.to_s.snakecase.to_sym }
   end
 end
 
