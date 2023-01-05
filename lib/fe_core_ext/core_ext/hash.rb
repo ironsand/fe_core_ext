@@ -10,6 +10,11 @@ module FeCoreExt::CoreExt::Hash
   def snake_symbolize_keys
     transform_keys { |key| key.to_s.snakecase.to_sym }
   end
+
+  def rename_key(original_key, new_key)
+    self[new_key] = delete(original_key) if key?(original_key)
+    self
+  end
 end
 
 class Hash
