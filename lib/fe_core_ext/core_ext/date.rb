@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support'
 require 'active_support/time'
 
@@ -18,9 +20,9 @@ module FeCoreExt::CoreExt::Date
   end
 
   def nth_weekday(nth, weekday)
-    first_day = Date.new(self.year, self.month, 1)
-    weekdays_hash = {sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6}
-    weekday_dates = (first_day..first_day.end_of_month).select{|d| d.wday == weekdays_hash[weekday]}
+    first_day = Date.new(year, month, 1)
+    weekdays_hash = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 }
+    weekday_dates = (first_day..first_day.end_of_month).select { |d| d.wday == weekdays_hash[weekday] }
     weekday_dates[nth - 1]
   end
 end
@@ -29,6 +31,7 @@ module FeCoreExt::CoreExt::DateClassMethods
   def parsable?(string)
     parsed_hash = _parse(string)
     return true if parsed_hash.has_key?(:year) && parsed_hash.has_key?(:mon)
+
     false
   end
 
@@ -39,15 +42,15 @@ module FeCoreExt::CoreExt::DateClassMethods
 
   def parse_heisei(string)
     string.match('平成(\d+)年(\d+)月(\d+)日') do
-      Date.new($1.to_i + 1988, $2.to_i, $3.to_i)
+      Date.new(::Regexp.last_match(1).to_i + 1988, ::Regexp.last_match(2).to_i, ::Regexp.last_match(3).to_i)
     end
   end
 
   def parse_reiwa(string)
     string.match('令和(\S+)年(\d+)月(\d+)日') do
-      year = 1 if $1 == '元'
-      year ||= $1.to_i
-      Date.new(year + 2018, $2.to_i, $3.to_i)
+      year = 1 if ::Regexp.last_match(1) == '元'
+      year ||= ::Regexp.last_match(1).to_i
+      Date.new(year + 2018, ::Regexp.last_match(2).to_i, ::Regexp.last_match(3).to_i)
     end
   end
 
@@ -57,14 +60,13 @@ module FeCoreExt::CoreExt::DateClassMethods
 
   def parse_nengappi(string)
     string.match(/(\d{4})年(\d+)月(\d+)日/) do
-       Date.new($1.to_i, $2.to_i, $3.to_i) 
+      Date.new(::Regexp.last_match(1).to_i, ::Regexp.last_match(2).to_i, ::Regexp.last_match(3).to_i)
     end
   end
 
   def parse_ja(string)
     parse_nengappi(string) || parse_gengo(string)
   end
-
 end
 
 class Date
