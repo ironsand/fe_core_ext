@@ -42,7 +42,7 @@ module FeCoreExt::CoreExt::String
   end
 
   def valid_number?
-    match?(/^-?([0-9][\d\,\.]*)$/)
+    match?(/^-?([0-9][\d,.]*)$/)
   end
 
   ## deprecated
