@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
-require 'bigdecimal'
-require 'bigdecimal/util'
-require 'csv'
+require "bigdecimal"
+require "bigdecimal/util"
+require "csv"
 
 module FeCoreExt::CoreExt
 end
 
 module FeCoreExt::CoreExt::CSV
-
 end
 
 class CSV

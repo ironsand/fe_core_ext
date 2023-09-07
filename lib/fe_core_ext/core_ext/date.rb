@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'active_support'
-require 'active_support/time'
+require "active_support"
+require "active_support/time"
 
 module FeCoreExt::CoreExt
 end
@@ -48,7 +48,7 @@ module FeCoreExt::CoreExt::DateClassMethods
 
   def parse_reiwa(string)
     string.match('令和(\S+)年(\d+)月(\d+)日') do
-      year = 1 if ::Regexp.last_match(1) == '元'
+      year = 1 if ::Regexp.last_match(1) == "元"
       year ||= ::Regexp.last_match(1).to_i
       Date.new(year + 2018, ::Regexp.last_match(2).to_i, ::Regexp.last_match(3).to_i)
     end

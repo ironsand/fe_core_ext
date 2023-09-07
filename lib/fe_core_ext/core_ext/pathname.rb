@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'pathname'
-require 'yaml'
-require 'fileutils'
+require "pathname"
+require "yaml"
+require "fileutils"
 
 module FeCoreExt::CoreExt
 end
@@ -21,11 +21,11 @@ module FeCoreExt::CoreExt::Pathname
     self if exist?
   end
 
-  def touch(options={})
+  def touch(options = {})
     FileUtils.touch(@path, options)
   end
 
-  def rm(options={})
+  def rm(options = {})
     FileUtils.rm(self, options)
   end
 
@@ -48,7 +48,7 @@ module FeCoreExt::CoreExt::PathnameClassMethods
     new(File.join(*args))
   end
 
-  def mktmpdir(prefix_suffix=nil, tmpdir=nil)
+  def mktmpdir(prefix_suffix = nil, tmpdir = nil)
     if block_given?
       Dir.mktmpdir prefix_suffix, tmpdir do |dir|
         yield new(dir)

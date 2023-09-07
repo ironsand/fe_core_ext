@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'bigdecimal'
-require 'bigdecimal/util'
+require "bigdecimal"
+require "bigdecimal/util"
 
 module FeCoreExt::CoreExt
 end
@@ -41,10 +41,9 @@ module FeCoreExt::CoreExt::Array
     # ブロックを持たない場合
     return temp.delete_if unless block_given?
 
-    self.each{|val| temp.delete(val) if yield(val)}
+    self.each { |val| temp.delete(val) if yield(val) }
     temp
   end
-
 end
 
 class Array

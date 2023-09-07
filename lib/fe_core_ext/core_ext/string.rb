@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'bigdecimal'
-require 'bigdecimal/util'
-require 'pathname'
-require 'nkf'
+require "bigdecimal"
+require "bigdecimal/util"
+require "pathname"
+require "nkf"
 
 module FeCoreExt::CoreExt
 end
@@ -11,26 +11,26 @@ end
 module FeCoreExt::CoreExt::String
   def to_integer
     return unless valid_number?
-    delete(',').to_i
+    delete(",").to_i
   end
 
   def integer?
-    self.to_integer.to_s == self.delete(',')
+    self.to_integer.to_s == self.delete(",")
   end
 
   def to_decimal
     return unless valid_number?
-    delete(',').to_d
+    delete(",").to_d
   end
 
   def to_decimal_new
     return unless valid_number?
-    delete(',').to_d
+    delete(",").to_d
   end
 
   def to_float
     return unless valid_number?
-    delete(',').to_f
+    delete(",").to_f
   end
 
   def to_pathname
@@ -38,7 +38,7 @@ module FeCoreExt::CoreExt::String
   end
 
   def not_number?
-    to_i == 0 && match('0').nil?
+    to_i == 0 && match("0").nil?
   end
 
   def valid_number?
@@ -47,15 +47,15 @@ module FeCoreExt::CoreExt::String
 
   ## deprecated
   def zen_to_han
-    tr('０-９Ａ-Ｚａ-ｚ　＆・－（）', '0-9A-Za-z &･\-()')
+    tr("０-９Ａ-Ｚａ-ｚ　＆・－（）", '0-9A-Za-z &･\-()')
   end
 
   def alphanumeric_zen_to_han
-    tr('０-９Ａ-Ｚａ-ｚ　＆・．－（）', '0-9A-Za-z &･.\-()')
+    tr("０-９Ａ-Ｚａ-ｚ　＆・．－（）", '0-9A-Za-z &･.\-()')
   end
 
   def to_katakana
-    tr('ぁ-ん', 'ァ-ン')
+    tr("ぁ-ん", "ァ-ン")
   end
 
   def match?(str)
@@ -63,17 +63,17 @@ module FeCoreExt::CoreExt::String
   end
 
   def kana_upcase
-    tr('ァィゥェォヵヶッャュョヮ', 'アイウエオカケツヤユヨワ')
+    tr("ァィゥェォヵヶッャュョヮ", "アイウエオカケツヤユヨワ")
   end
 
   def to_han_kana
     return if self.nil?
-    NKF.nkf('-wxZ4', self)
+    NKF.nkf("-wxZ4", self)
   end
 
   def to_zen_kana
     return if self.nil?
-    NKF.nkf('-wX', self)
+    NKF.nkf("-wX", self)
   end
 
   def to_date_in_ja
@@ -81,16 +81,16 @@ module FeCoreExt::CoreExt::String
   end
 
   def to_date_in_ja_seireki
-    match(/(\d{4})年(\d{1,2})月(\d{1,2})日/) {Date.new($1.to_i, $2.to_i, $3.to_i)}
+    match(/(\d{4})年(\d{1,2})月(\d{1,2})日/) { Date.new($1.to_i, $2.to_i, $3.to_i) }
   end
 
   def to_date_in_ja_heisei
-    match(/平成(\d{2})年(\d{1,2})月(\d{1,2})日/) {Date.new($1.to_i + 1988, $2.to_i, $3.to_i)}
+    match(/平成(\d{2})年(\d{1,2})月(\d{1,2})日/) { Date.new($1.to_i + 1988, $2.to_i, $3.to_i) }
   end
 
   # remove also no break space and other space like characters.
   def strong_strip
-    reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, '').reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, '')
+    reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, "").reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, "")
   end
 
   def sjis_encodable
