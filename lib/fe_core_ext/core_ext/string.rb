@@ -33,6 +33,11 @@ module FeCoreExt::CoreExt::String
     delete(",").to_f
   end
 
+  def valid_sec_code?
+    valid_chars = "[0-9ACDFGHJKLMNPRSTUWXY]"
+    match?(/^\d#{valid_chars}\d#{valid_chars}$/)
+  end
+
   def to_pathname
     Pathname(self)
   end
