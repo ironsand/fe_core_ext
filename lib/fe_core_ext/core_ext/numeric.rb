@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-module FeCoreExt::CoreExt
-end
-
-module FeCoreExt::CoreExt::Numeric
-  def invert
-    -self
+module FeCoreExt
+  module CoreExt
+    module Numeric
+      def invert
+        -self
+      end
+    end
   end
 end
 

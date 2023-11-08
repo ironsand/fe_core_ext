@@ -5,9 +5,6 @@ require "fileutils"
 require "open-uri"
 require "net/http"
 
-module FeCoreExt::CoreExt
-end
-
 module URI
   def download(file)
     warn "URI#downloadの引数にはPathnameを使いましょう！" if file.is_a?(String)
@@ -27,8 +24,10 @@ module URI
   end
 end
 
-class URI::Generic
-  def basename
-    ::File.basename(path)
+module URI
+  class Generic
+    def basename
+      ::File.basename(path)
+    end
   end
 end

@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-module FeCoreExt::CoreExt
-end
-
-module FeCoreExt::CoreExt::Integer
-  def nan?
-    false
+module FeCoreExt
+  module CoreExt
+    module Integer
+      def nan?
+        false
+      end
+    end
   end
 end
 
