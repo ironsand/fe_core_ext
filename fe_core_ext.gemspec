@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "activesupport"
   spec.add_development_dependency "bundler", "~> 2.1"
   spec.add_development_dependency "rake", "~> 12.3"
-  spec.add_development_dependency "rspec", "~> 0"
-  spec.add_development_dependency "selenium-webdriver", "~> 0"
+
+  spec.add_development_dependency "ferrum"
+  spec.add_development_dependency "selenium-webdriver"
 end

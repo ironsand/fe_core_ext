@@ -2,11 +2,11 @@
 
 module Ferrum
   class Browser
-    delegate %i[wait_for_css wait_for_xpath] => :page
+    delegate :wait_for_css, :wait_for_xpath, to: :page
   end
 
   class Page
-    delegate %i[wait_for_css wait_for_xpath] => :main_frame
+    delegate :wait_for_css, :wait_for_xpath, to: :main_frame
   end
 
   class Frame
