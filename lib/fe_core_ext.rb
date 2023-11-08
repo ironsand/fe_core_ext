@@ -10,5 +10,7 @@ require_relative "fe_core_ext/core_ext/string"
 require_relative "fe_core_ext/core_ext/time"
 require_relative "fe_core_ext/core_ext/uri"
 
+require_relative "fe_core_ext/gem_ext/ferrum"
+
 module FeCoreExt
 end
