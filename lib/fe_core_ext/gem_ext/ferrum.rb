@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 module Ferrum
   class Browser
-    delegate :wait_for_css, :wait_for_csses, :wait_for_xpath, :wait_for_xpaths, to: :page
+    extend Forwardable
+    instance_delegate %i[wait_for_css wait_for_csses wait_for_xpath wait_for_xpaths] => :page
   end
 
   class Page
-    delegate :wait_for_css, :wait_for_csses, :wait_for_xpath, :wait_for_xpaths, to: :main_frame
+    extend Forwardable
+    instance_delegate %i[wait_for_css wait_for_csses wait_for_xpath wait_for_xpaths] => :main_frame
   end
 
   class Frame
