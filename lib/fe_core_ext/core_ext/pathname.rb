@@ -6,7 +6,7 @@ require "fileutils"
 
 module FeCoreExt
   module CoreExt
-    module Pathname
+    module PathnameMethods
       def load_yaml
         return unless exist?
         YAML.load_file(self)
@@ -65,6 +65,6 @@ module FeCoreExt
 end
 
 class Pathname
+  include FeCoreExt::CoreExt::PathnameMethods  
   extend FeCoreExt::CoreExt::PathnameClassMethods
-  include FeCoreExt::CoreExt::Pathname
 end

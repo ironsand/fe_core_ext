@@ -18,10 +18,6 @@ module FeCoreExt
   end
 end
 
-module FeCoreExt::CoreExt::TimeClassMethods
-end
-
 class Time
   include FeCoreExt::CoreExt::Time
-  extend FeCoreExt::CoreExt::TimeClassMethods
 end

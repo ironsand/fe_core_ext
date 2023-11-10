@@ -14,7 +14,7 @@ module FeCoreExt
       end
 
       def integer?
-        self.to_integer.to_s == self.delete(",")
+        to_integer.to_s == delete(",")
       end
 
       def to_decimal
@@ -42,7 +42,7 @@ module FeCoreExt
       end
 
       def not_number?
-        to_i == 0 && match("0").nil?
+        to_i.zero? && match("0").nil?
       end
 
       def valid_number?

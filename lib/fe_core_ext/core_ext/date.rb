@@ -5,7 +5,7 @@ require "active_support/time"
 
 module FeCoreExt
   module CoreExt
-    module Date
+    module DateMethods
       def end_of_month?
         self == end_of_month
       end
@@ -75,6 +75,6 @@ module FeCoreExt
 end
 
 class Date
-  include FeCoreExt::CoreExt::Date
+  include FeCoreExt::CoreExt::DateMethods
   extend FeCoreExt::CoreExt::DateClassMethods
 end
