@@ -22,19 +22,9 @@ module FeCoreExt
         delete(",").to_d
       end
 
-      def to_decimal_new
-        return unless valid_number?
-        delete(",").to_d
-      end
-
       def to_float
         return unless valid_number?
         delete(",").to_f
-      end
-
-      def valid_sec_code?
-        valid_chars = "[0-9ACDFGHJKLMNPRSTUWXY]"
-        match?(/^\d#{valid_chars}\d#{valid_chars}$/)
       end
 
       def to_pathname
@@ -58,12 +48,12 @@ module FeCoreExt
         tr("０-９Ａ-Ｚａ-ｚ　＆・．－（）", '0-9A-Za-z &･.\-()')
       end
 
-      def to_katakana
-        tr("ぁ-ん", "ァ-ン")
+      def to_half_alpha
+        tr("０-９Ａ-Ｚａ-ｚ　＆・．－（）", '0-9A-Za-z &･.\-()')
       end
 
-      def match?(str)
-        /#{str}/ === self
+      def to_katakana
+        tr("ぁ-ん", "ァ-ン")
       end
 
       def kana_upcase
@@ -71,12 +61,12 @@ module FeCoreExt
       end
 
       def to_han_kana
-        return if self.nil?
+        return if nil?
         NKF.nkf("-wxZ4", self)
       end
 
       def to_zen_kana
-        return if self.nil?
+        return if nil?
         NKF.nkf("-wX", self)
       end
 
@@ -97,15 +87,6 @@ module FeCoreExt
         reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, "").reverse.gsub(/^\p{Zs}+|^\p{Cf}+/, "")
       end
 
-      def sjis_encodable
-        tr("\u301C\u2212\u00A2\u00A3\u00AC\u2014\u2016",
-           "\uFF5E\uFF0D\uFFE0\uFFE1\uFFE2\u2015\u2225")
-      end
-
-      def eucjp_encodable
-        tr("\uFF5E\uFF0D\uFFE0\uFFE1\uFFE2\u2015\u2225",
-           "\u301C\u2212\u00A2\u00A3\u00AC\u2014\u2016")
-      end
     end
   end
 end
