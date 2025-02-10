@@ -36,10 +36,16 @@ module Ferrum
       def wait_for_selector(selector, selector_method, timeout)
         interval = 0.1
         (timeout / interval).to_i.times do
-          nodes = send(selector_method, selector)
+          nodes = select_ignore_not_found(selector_method, selector)
           return nodes if nodes
           sleep(interval)
         end
+        nil
+      end
+
+      def select_ignore_not_found(selector_method, selector)
+        send(selector_method, selector)
+      rescue Ferrum::NodeNotFoundError
         nil
       end
     end
