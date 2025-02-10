@@ -31,6 +31,15 @@ module Ferrum
         wait_for_selector(selector, :at_xpath, timeout)
       end
 
+      def with(selector, init:nil, wait:3, step:0.1)
+        sleep(init) if init
+        meth = selector.start_with?("/") ? :at_xpath : :at_css
+        until node = send(meth, selector) rescue nil
+          (wait -= step) > 0 ? sleep(step) : break
+        end
+        node
+      end
+
       private
 
       def wait_for_selector(selector, selector_method, timeout)
