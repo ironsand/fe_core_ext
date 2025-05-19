@@ -37,8 +37,8 @@ module Ferrum
         interval = 0.1
         (timeout / interval).to_i.times do
           nodes = select_ignore_not_found(selector_method, selector)
-          return nodes unless nodes.nil? || nodes.empty?
-          sleep(interval)
+          next sleep(interval) if nodes.nil? || nodes == []
+          return nodes
         end
         nil
       end
